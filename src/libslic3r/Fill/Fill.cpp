@@ -861,6 +861,8 @@ Polylines Layer::generate_sparse_infill_polylines_for_anchoring(FillAdaptive::Oc
         case ipMonotonicLine:
         case ipAlignedRectilinear:
         case ipGrid:
+        case ipGridLattice:
+        case ipRadialLattice:
         case ipTriangles:
         case ipStars:
         case ipCubic:

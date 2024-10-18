@@ -389,6 +389,8 @@ coordf_t Layer::get_sparse_infill_max_void_area()
                 max_void_area = std::max(max_void_area, spacing * spacing);
                 break;
             case ipGrid:
+            case ipGridLattice:
+            case ipRadialLattice:
             case ipHoneycomb:
             case ipLightning:
                 max_void_area = std::max(max_void_area, 4.0 * spacing * spacing);

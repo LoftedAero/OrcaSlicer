@@ -71,6 +71,30 @@ protected:
     float _layer_angle(size_t idx) const override { return 0.f; }
 };
 
+class FillGridLattice : public FillRectilinear
+{
+public:
+    Fill* clone() const override { return new FillGridLattice(*this); }
+    ~FillGridLattice() override = default;
+    Polylines fill_surface(const Surface *surface, const FillParams &params) override;
+
+protected:
+	// The grid fill will keep the angle constant between the layers, see the implementation of Slic3r::Fill.
+    float _layer_angle(size_t idx) const override { return 0.f; }
+};
+
+class FillRadialLattice : public FillRectilinear
+{
+public:
+    Fill* clone() const override { return new FillRadialLattice(*this); }
+    ~FillRadialLattice() override = default;
+    Polylines fill_surface(const Surface *surface, const FillParams &params) override;
+
+protected:
+	// The grid fill will keep the angle constant between the layers, see the implementation of Slic3r::Fill.
+    float _layer_angle(size_t idx) const override { return 0.f; }
+};
+
 class FillTriangles : public FillRectilinear
 {
 public:

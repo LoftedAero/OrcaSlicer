@@ -3490,6 +3490,8 @@ void PrintObject::combine_infill()
                 ((infill_pattern == ipRectilinear   ||
                   infill_pattern == ipMonotonic     ||
                   infill_pattern == ipGrid          ||
+                  infill_pattern == ipGridLattice   ||
+                  infill_pattern == ipRadialLattice ||
                   infill_pattern == ipLine          ||
                   infill_pattern == ipHoneycomb) ? 1.5f : 0.5f) *
                     layerms.back()->flow(frSolidInfill).scaled_width();

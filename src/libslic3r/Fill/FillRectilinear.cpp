@@ -3001,6 +3001,38 @@ Polylines FillGrid::fill_surface(const Surface *surface, const FillParams &param
     return polylines_out;
 }
 
+Polylines FillGridLattice::fill_surface(const Surface *surface, const FillParams &params)
+{
+    Polylines polylines_out;
+    coordf_t dx = sqrt(0.5) * z;
+    if (! this->fill_surface_by_multilines(
+            surface, params,
+            { { float(M_PI / 2.), float(dx) }, { float(M_PI / 2.), - float(dx) } },
+            polylines_out))
+        BOOST_LOG_TRIVIAL(error) << "FillGridLattice::fill_surface() failed to fill a region.";
+
+    if (this->layer_id % 2 == 1)
+        for (int i = 0; i < polylines_out.size(); i++)
+            std::reverse(polylines_out[i].begin(), polylines_out[i].end());
+    return polylines_out;
+}
+
+Polylines FillRadialLattice::fill_surface(const Surface *surface, const FillParams &params)
+{
+    Polylines polylines_out;
+    coordf_t dx = sqrt(0.5) * z;
+    if (! this->fill_surface_by_multilines(
+            surface, params,
+            { { float(M_PI / 2.), float(dx) }, { float(M_PI / 2.), - float(dx) } },
+            polylines_out))
+        BOOST_LOG_TRIVIAL(error) << "FillRadialLattice::fill_surface() failed to fill a region.";
+
+    if (this->layer_id % 2 == 1)
+        for (int i = 0; i < polylines_out.size(); i++)
+            std::reverse(polylines_out[i].begin(), polylines_out[i].end());
+    return polylines_out;
+}
+
 Polylines FillTriangles::fill_surface(const Surface *surface, const FillParams &params)
 {
     Polylines polylines_out;

@@ -126,6 +126,8 @@ static t_config_enum_values s_keys_map_InfillPattern {
     { "concentric",         ipConcentric },
     { "zig-zag",            ipRectilinear },
     { "grid",               ipGrid },
+    { "gridlattice",        ipGridLattice },
+    { "radiallattice",      ipRadialLattice },
     { "line",               ipLine },
     { "cubic",              ipCubic },
     { "triangles",          ipTriangles },
@@ -2233,6 +2235,8 @@ void PrintConfigDef::init_fff_params()
     def->enum_values.push_back("concentric");
     def->enum_values.push_back("zig-zag");
     def->enum_values.push_back("grid");
+    def->enum_values.push_back("gridlattice");
+    def->enum_values.push_back("radiallattice");
     def->enum_values.push_back("line");
     def->enum_values.push_back("cubic");
     def->enum_values.push_back("triangles");
@@ -2251,6 +2255,8 @@ void PrintConfigDef::init_fff_params()
     def->enum_labels.push_back(L("Concentric"));
     def->enum_labels.push_back(L("Rectilinear"));
     def->enum_labels.push_back(L("Grid"));
+    def->enum_labels.push_back(L("Grid Lattice"));
+    def->enum_labels.push_back(L("Radial Lattice"));
     def->enum_labels.push_back(L("Line"));
     def->enum_labels.push_back(L("Cubic"));
     def->enum_labels.push_back(L("Triangles"));
